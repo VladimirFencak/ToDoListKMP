@@ -21,4 +21,14 @@ actual val expectAppModule: Module = module {
             }
         }
     }
+
+    //    single {
+    //        val dbFile = NSHomeDirectory() + "/task-database.db"
+    //        Room.databaseBuilder(
+    //            name = dbFile,
+    //            factory = { TaskDatabase::class.instantiateImpl() }
+    //        )
+    //            .setDriver(BundledSQLiteDriver())
+    //            .build()
+    //    }
 }

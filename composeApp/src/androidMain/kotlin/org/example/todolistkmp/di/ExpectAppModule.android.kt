@@ -21,4 +21,11 @@ actual val expectAppModule: Module = module {
             }
         }
     }
+    //    single {
+    //        Room.databaseBuilder(
+    //            get(),
+    //            TaskDatabase::class.java,
+    //            "task-database"
+    //        ).setDriver(BundledSQLiteDriver()).build()
+    //    }
 }
