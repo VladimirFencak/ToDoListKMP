@@ -34,6 +34,9 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.android)
+
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -51,9 +54,14 @@ kotlin {
             implementation(libs.kotlinx.serialization)
 
             implementation(libs.kotlin.datetime)
+
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.lifecycle.viewmodel)
+            implementation(libs.navigation.compose)
         }
         iosMain.dependencies {
-
+            implementation(libs.ktor.ios)
         }
     }
 }
