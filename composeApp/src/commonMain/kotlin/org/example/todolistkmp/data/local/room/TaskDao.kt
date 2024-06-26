@@ -1,4 +1,4 @@
-package org.example.todolistkmp.data.local
+package org.example.todolistkmp.data.local.room
 
 import androidx.room.Dao
 import androidx.room.Delete

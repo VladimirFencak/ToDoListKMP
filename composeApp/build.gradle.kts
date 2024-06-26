@@ -1,6 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -10,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.sqldelightt)
 }
 
 kotlin {
@@ -42,6 +42,8 @@ kotlin {
 
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            implementation(libs.sqldelightt.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -51,6 +53,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlin.datetime)
+            implementation(compose.material3)
 
             implementation(libs.ktor.core)
             implementation(libs.ktor.auth)
@@ -67,9 +70,12 @@ kotlin {
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
 
+            implementation(libs.sqldelightt.runtime)
+            implementation(libs.sqldelightt.coroutines)
         }
         iosMain.dependencies {
             implementation(libs.ktor.ios)
+            implementation(libs.sqldelightt.native)
         }
     }
 }
@@ -111,6 +117,15 @@ android {
     }
 }
 
+
+sqldelight {
+    database("TasksDatabase") {
+        packageName = "org.example.todolistkmp.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
+
 room {
     schemaDirectory("$projectDir/schemas")
 }
@@ -119,7 +134,7 @@ dependencies {
     add("kspCommonMainMetadata", libs.room.compiler)
 }
 
-tasks.withType<KotlinJvmCompile>().configureEach {
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
     if (name != "kspCommonMainKotlinMetadata") {
         dependsOn("kspCommonMainKotlinMetadata")
     }

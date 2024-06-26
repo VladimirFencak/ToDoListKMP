@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TodoList</string>
+    <string name="agenda">Agenda</string>
+    <string name="back">Back</string>
+    <string name="created_at">Created at : </string>
+    <string name="delete_task_button">DELETE TASK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_task_dialog">Delete Task</string>
+    <string name="profile">Profile</string>
+    <string name="add_task">Add Task</string>
+    <string name="save">Save</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="error">error</string>
+</resources>
